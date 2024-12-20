@@ -7,7 +7,7 @@
   <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-
+  <link rel="stylesheet" href="./styles.css">
   <title>Frontend Mentor | News homepage</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -35,16 +35,26 @@
         <li><a href="#">Categories</a></li>
       </ul>
     </nav>
+    <div class="mobile_menu">
+      <i class="mobile_menu_icon" aria-hidden="true"></i>
+    </div>
+    <div class="overlay">
+
+    </div>
   </header>
   <main class="container">
     <section class="hero">
       <div class="hot_news">
         <img src="./assets/images/image-web-3-desktop.jpg" alt="hot_news"
-          srcset="./assets/images/image-web-3-desktop.jpg 767w, ./assets/images/image-web-3-mobile.jpg">
+          srcset="./assets/images/image-web-3-desktop.jpg 1024w, ./assets/images/image-web-3-mobile.jpg 520w"
+          sizes="(max-width:768px) : 60%, 100%">
         <h1>The Bright Future of Web 3.0?</h1>
-        <p>We dive into the next evolution of the web that claims to put the power of the platforms back into the hands
-          of the people. But is it really fulfilling its promise?</p>
-        <a href="#">Read more</a>
+        <div class="content">
+          <p>We dive into the next evolution of the web that claims to put the power of the platforms back into the
+            hands
+            of the people. But is it really fulfilling its promise?</p>
+          <a href="#">Read more</a>
+        </div>
       </div>
       <div class="side">
         <h2>New</h2>
@@ -91,10 +101,13 @@
       </div>
     </section>
   </main>
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Trần Danh</a>.
-  </div>
+
 </body>
+<script>
+  let [menuIcon, overlay] = ['.mobile_menu', '.overlay'].map(el => document.querySelector(el));
+  let handleMenu = e => e.target.closest('header').toggleAttribute('open')
+  menuIcon.addEventListener('click', handleMenu)
+  overlay.addEventListener('click', handleMenu)
+</script>
 
 </html>
